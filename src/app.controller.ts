@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { createResponse } from './common/response';
 
 @Controller()
 export class AppController {
@@ -7,7 +8,8 @@ export class AppController {
 
   @Get()
   getHello() {
-    return this.appService.getHello();
+    const data = this.appService.getHello();
+    return createResponse(200, data);
   }
 
   @Get('/about')

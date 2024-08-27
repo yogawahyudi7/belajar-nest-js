@@ -11,7 +11,7 @@ export function createResponse<T>(
   error?: any,
 ): ApiResponse<T> {
   let message: string;
-  if (code === 200) {
+  if (code === 200 || code === 201) {
     message = 'Success';
   } else if (code === 400) {
     message = 'Bad Request';

@@ -14,10 +14,21 @@ datasource db {
 }
 
 model task {
-  id          Int   @id @default(autoincrement())
-  task_name  String
-  task_description String @db.Text
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  id               Int       @id @default(autoincrement())
+  task_name        String
+  task_description String    @db.Text
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @default(now())
+  deleted_at       DateTime?
+}
+
+model user {
+  id         Int       @id @default(autoincrement())
+  email      String    @unique
+  password   String
+  name       String
+  avatar     String?
+  created_at DateTime  @default(now())
+  updated_at DateTime  @default(now())
   deleted_at DateTime?
 }

@@ -1,34 +1,34 @@
 export interface ApiResponse<T> {
-  code: number;
+  statusCode: number;
   message: string;
   error?: any;
   data?: T;
 }
 
 export function createResponse<T>(
-  code: number,
+  statusCode: number,
   data?: T,
   error?: any,
 ): ApiResponse<T> {
   let message: string;
-  if (code === 200 || code === 201) {
+  if (statusCode === 200 || statusCode === 201) {
     message = 'Success';
-  } else if (code === 400) {
+  } else if (statusCode === 400) {
     message = 'Bad Request';
-  } else if (code === 401) {
+  } else if (statusCode === 401) {
     message = 'Unauthorized';
-  } else if (code === 403) {
+  } else if (statusCode === 403) {
     message = 'Forbidden';
-  } else if (code === 404) {
+  } else if (statusCode === 404) {
     message = 'Not Found';
-  } else if (code === 500) {
+  } else if (statusCode === 500) {
     message = 'Internal Server Error';
   } else {
     message = 'Unknown Error';
   }
 
   return {
-    code,
+    statusCode,
     message,
     data,
     error,
